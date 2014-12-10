@@ -153,4 +153,8 @@
     <value>===============================================================================</value>
     <comment>Linha utilizada como delimitador</comment>
   </data>
+  <data name="DictionaryURL" xml:space="preserve">
+    <value>http://teste.way2.com.br/dic/api/words/{0}</value>
+    <comment>URL do WebService utilizada para buscar informações do dicionário</comment>
+  </data>
 </root>

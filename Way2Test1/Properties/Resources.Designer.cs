@@ -140,5 +140,14 @@ namespace Way2Test1.Properties {
                 return ResourceManager.GetString("ConsoleSeparator", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://teste.way2.com.br/dic/api/words/{0}.
+        /// </summary>
+        internal static string DictionaryURL {
+            get {
+                return ResourceManager.GetString("DictionaryURL", resourceCulture);
+            }
+        }
     }
 }

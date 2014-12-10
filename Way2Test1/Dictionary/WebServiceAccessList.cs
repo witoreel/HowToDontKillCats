@@ -29,6 +29,12 @@ namespace Way2Test1.Dictionary {
             _registers.Clear();
         }
 
+        public int Count {
+            get {
+                return _registers.Count();
+            }
+        }
+
         void AfterLoad() {
             List<DateTime> d = new List<DateTime>();
                 if (Registers != null)
@@ -47,29 +53,30 @@ namespace Way2Test1.Dictionary {
             Registers = d;
         }
 
-        public static WebServiceAccessList Load() {
+        public void Load() {
             FileInfo file = new FileInfo(FileName);            
             if (File.Exists(FileName)) {
                 Stream stream = File.OpenRead(FileName);
                 try {
                     SoapFormatter deserializer = new SoapFormatter();
-                    WebServiceAccessList accessList = (WebServiceAccessList)deserializer.Deserialize(stream);
-                    accessList.AfterLoad();
+                    WebServiceAccessList accessList = (WebServiceAccessList)deserializer.Deserialize(stream);                    
                     stream.Close();
-                    return accessList;
+
+                    this.Registers = accessList.Registers;
+                    AfterLoad();
                 } catch {
                     stream.Close();
                     file.Delete();
                 }
             }
-            return new WebServiceAccessList();            
+            
         }
 
-        public static void Save(WebServiceAccessList accessList) {
+        public void Save() {
             Stream stream = File.Create(FileName);
             SoapFormatter serializer = new SoapFormatter();
-            accessList.BeforeSave();
-            serializer.Serialize(stream, accessList);
+            BeforeSave();
+            serializer.Serialize(stream, this);
             stream.Close();
         }
 
