@@ -14,6 +14,7 @@ namespace Way2Test1
             System.Console.ReadLine();
 
 
+
         }
     }
 }
