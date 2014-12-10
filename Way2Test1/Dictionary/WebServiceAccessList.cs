@@ -18,20 +18,28 @@ namespace Way2Test1.Dictionary {
         private List<DateTime> _registers;
 
         public DateTime[] Registers { get; set; }
+        private List<DateTime> registers {
+            get {
+                if (_registers == null)
+                    _registers = new List<DateTime>();
+                return _registers;
+            }
+            set {
+                _registers = value;
+            }
+        }
 
         public void Add(DateTime item) {
-            if (_registers == null)
-                _registers = new List<DateTime>();
-            _registers.Add(item);
+            registers.Add(item);
         }
 
         public void Clear() {
-            _registers.Clear();
+            registers.Clear();
         }
 
         public int Count {
             get {
-                return _registers.Count();
+                return registers.Count();
             }
         }
 
@@ -40,16 +48,16 @@ namespace Way2Test1.Dictionary {
                 if (Registers != null)
                     for (int i = 0; i < Registers.Length; i++)
                         d.Add(Registers[i]);
-                _registers = d;
+                registers = d;
         }
 
         void BeforeSave() {
-            if (_registers == null)
+            if (registers == null)
                 Registers = new DateTime[0];
 
-            DateTime[] d = new DateTime[_registers.Count];
-            for (int i = 0; i < _registers.Count; i++)
-                d[i] = _registers[i];
+            DateTime[] d = new DateTime[registers.Count];
+            for (int i = 0; i < registers.Count; i++)
+                d[i] = registers[i];
             Registers = d;
         }
 

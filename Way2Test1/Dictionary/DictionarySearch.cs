@@ -26,17 +26,25 @@ namespace Way2Test1.Dictionary {
         }
 
 
-        public string Search(int index) {
+        public string Search(long index) {
 
+            string keyword = null;
             string url = String.Format(Resources.DictionaryURL, index);
             WebRequest request = WebRequest.Create(url);
-            Stream stream = request.GetResponse().GetResponseStream();
-            StreamReader reader = new StreamReader(stream);
+            
+            try {
+                Stream stream = request.GetResponse().GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
 
-            string keyword = reader.ReadLine();
+                keyword = reader.ReadLine();
 
-            reader.Close();
-            stream.Close();
+                reader.Close();
+                stream.Close();
+            } catch(WebException ex) {
+                string message = ex.Message;
+                if (message.IndexOf("(406)") == -1 && message.IndexOf("(400)") == -1)
+                    System.Console.WriteLine(ex.Message);                    
+            }
 
             WebServiceAccessed.Add(DateTime.Now);
             WebServiceAccessed.Save();

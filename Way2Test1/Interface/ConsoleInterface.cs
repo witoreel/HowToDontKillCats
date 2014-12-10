@@ -24,7 +24,7 @@ namespace Way2Test1.Interface {
         /// Na primeira deve conter o índice da palavra no dicionário, ou -1 caso ela não exista.
         /// Na segunda deve conter a quantidade de iterações (buscas no webservice) realizadas no processo.
         /// </summary>
-        private Func<string, int[]> SearchHandler;
+        private Func<string, long[]> SearchHandler;
 
         /// <summary>
         /// Construtor padrão.
@@ -35,7 +35,7 @@ namespace Way2Test1.Interface {
         /// Na segunda deve conter a quantidade de iterações (buscas no webservice) realizadas no processo.
         /// </summary>
         /// <param name="searchHandler">Função responsável por executar o processo de busca da palavra chave</param>
-        public ConsoleInterface(Func<string, int[]> searchHandler) {
+        public ConsoleInterface(Func<string, long[]> searchHandler) {
             this.SearchHandler = searchHandler;
         }
 
@@ -47,16 +47,28 @@ namespace Way2Test1.Interface {
 
             System.Console.WriteLine(Resources.ConsoleHeader);
 
-            bool keepSearching = false;
+            bool keepSearching;
             do{
-                System.Console.WriteLine();
-                System.Console.WriteLine(Resources.ConsoleSeparator);
-                System.Console.Write(Resources.ConsoleAskKeyword+" ");                
-                string keyword = System.Console.ReadLine();
+                keepSearching = false;
 
-                int[] answer = SearchHandler(keyword);
-                int index = answer[0];
-                int iterations = answer[1];
+                System.Console.WriteLine();
+                System.Console.WriteLine(Resources.ConsoleSeparator);                          
+
+                bool keepAskingWord;
+                string keyword;
+                do{
+                    keepAskingWord = false;
+                    System.Console.Write(Resources.ConsoleAskKeyword + " ");      
+                    keyword = System.Console.ReadLine();
+                    if (keyword == null || keyword.Trim().Length == 0) {
+                        keepAskingWord = true;
+                        System.Console.WriteLine();
+                    }
+                }while(keepAskingWord);
+                
+                long[] answer = SearchHandler(keyword);
+                long index = answer[0];
+                long iterations = answer[1];
 
                 string indexMsg = index < 0 ? Resources.ConsoleAnswerNotFound : Resources.ConsoleAnswerFound;
                 string iterationsMsg = iterations == 1 ? Resources.ConsoleAnswerIterationSingle : Resources.ConsoleAnswerIterationPlural;

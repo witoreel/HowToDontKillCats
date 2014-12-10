@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\LocalDictionaryFile.cs" />
     <Compile Include="Dictionary\WebServiceAccessList.cs" />
     <Compile Include="Dictionary\DictionarySearch.cs" />
     <Compile Include="Engine\BissectionIterator.cs" />

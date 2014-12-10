@@ -18,10 +18,12 @@ namespace Way2Test1 {
 
         static void Main(string[] args) {
 
-            //Dictionary = new DictionarySearch();
+            Dictionary = new DictionarySearch();
             Iterator = new BissectionIterator(DicSearch);
             Interface = new ConsoleInterface(Iterator.FindIndexByKeyword);
+            System.Console.WriteLine(Dictionary.WebServiceAccessCount + " gatinhos mortos");
             Interface.Show();
+
 
         }
 
@@ -31,7 +33,7 @@ namespace Way2Test1 {
         }
 
 
-        static string DicSearch(int idx) {
+        static string DicSearch(long idx) {
             string[] list = new string[] { "abacaxi", "arvore", "bola", "casa", "dado", "elefante", "mesa", "tabuleiro", "vidro" };
             return idx < list.Length ? list[idx].ToUpper() : null;            
         }
