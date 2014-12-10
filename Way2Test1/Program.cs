@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Way2Test1.Dictionary;
+using Way2Test1.Interface;
 
 namespace Way2Test1 {
 
@@ -12,8 +14,13 @@ namespace Way2Test1 {
 
         static void Main(string[] args) {
 
-            Interface = new ConsoleInterface(SearchKeyWorkOnServer);
-            Interface.Show();
+            WebServiceAccessList al = WebServiceAccessList.Load();
+            al.Clear();
+            WebServiceAccessList.Save(al);
+
+
+            //Interface = new ConsoleInterface(SearchKeyWorkOnServer);
+            //Interface.Show();
 
 
         }

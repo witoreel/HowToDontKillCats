@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Way2Test1.Properties;
 
-namespace Way2Test1 {
+namespace Way2Test1.Interface {
     
     /// <summary>
     /// Classe responsável por realizar a interface entre o programa e a tela de Console.
