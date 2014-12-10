@@ -8,14 +8,41 @@ using Way2Test1.Properties;
 
 namespace Way2Test1 {
     
+    /// <summary>
+    /// Classe responsável por realizar a interface entre o programa e a tela de Console.
+    /// Nela são executados todos os métodos Write e Read da classe System.Console, sendo 
+    /// a única responsável no programa por isso. Todas as chamadas de funções são realizadas 
+    /// através de métodos passados como parâmetro, não havendo nenhum vínculo desta classe
+    /// com outras do aplicativo.
+    /// </summary>
     public class ConsoleInterface {
 
+        /// <summary>
+        /// Método utilizado para realizar a busca da palavra chave no dicionário.
+        /// Aceita como parâmetro um valor string, que é a palavra chave.
+        /// Deve retornar um vetor de int com duas posições: 
+        /// Na primeira deve conter o índice da palavra no dicionário, ou -1 caso ela não exista.
+        /// Na segunda deve conter a quantidade de iterações (buscas no webservice) realizadas no processo.
+        /// </summary>
         private Func<string, int[]> SearchHandler;
 
+        /// <summary>
+        /// Construtor padrão.
+        /// Recebe como parâmetro o método utilizado para realizar a busca da palavra chave no dicionário.
+        /// Esta função aceita como parâmetro um valor string, que é a palavra chave.
+        /// Ela deve retornar um vetor de int com duas posições: 
+        /// Na primeira deve conter o índice da palavra no dicionário, ou -1 caso ela não exista;
+        /// Na segunda deve conter a quantidade de iterações (buscas no webservice) realizadas no processo.
+        /// </summary>
+        /// <param name="searchHandler">Função responsável por executar o processo de busca da palavra chave</param>
         public ConsoleInterface(Func<string, int[]> searchHandler) {
             this.SearchHandler = searchHandler;
         }
 
+        /// <summary>
+        /// Método responsável por inicializar a exibição das mensagens no Console.
+        /// Nele são definidas todas possibilidades de acesso do usuário ao software.
+        /// </summary>
         public void Show() {
 
             System.Console.WriteLine(Resources.ConsoleHeader);
