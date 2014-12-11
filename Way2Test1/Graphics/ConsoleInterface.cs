@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Way2Software1.Interfaces;
 using Way2Software1.Properties;
 
-namespace Way2Software1.Interface {
+namespace Way2Software1.Graphics {
     
     /// <summary>
     /// Classe responsável por realizar a interface entre o programa e a tela de Console.
@@ -17,6 +18,8 @@ namespace Way2Software1.Interface {
     /// </summary>
     public class ConsoleInterface {
 
+        #region ====== Campos ======
+
         /// <summary>
         /// Método utilizado para realizar a busca da palavra chave no dicionário.
         /// Aceita como parâmetro um valor string, que é a palavra chave.
@@ -24,7 +27,11 @@ namespace Way2Software1.Interface {
         /// Na primeira deve conter o índice da palavra no dicionário, ou -1 caso ela não exista.
         /// Na segunda deve conter a quantidade de iterações (buscas no webservice) realizadas no processo.
         /// </summary>
-        private Func<string, long[]> SearchHandler;
+        private DictionaryIterator Iterator;
+
+        #endregion
+
+        #region ====== Construtores ======
 
         /// <summary>
         /// Construtor padrão.
@@ -35,9 +42,15 @@ namespace Way2Software1.Interface {
         /// Na segunda deve conter a quantidade de iterações (buscas no webservice) realizadas no processo.
         /// </summary>
         /// <param name="searchHandler">Função responsável por executar o processo de busca da palavra chave</param>
-        public ConsoleInterface(Func<string, long[]> searchHandler) {
-            this.SearchHandler = searchHandler;
+        public ConsoleInterface(DictionaryIterator iterator) {
+            this.Iterator = iterator;
+            if (iterator == null)
+                throw new Exception("O objeto do iterador não pode ser nulo!");
         }
+
+        #endregion
+
+        #region  ====== Métodos Públicos ======
 
         /// <summary>
         /// Método responsável por inicializar a exibição das mensagens no Console.
@@ -74,7 +87,7 @@ namespace Way2Software1.Interface {
                 //Realiza a pesquisa da palavra no dicionário e coleta os resultados
                 //É esperado um vetor de long com duas posições, sendo a primeira o índice da palavra no dicionário
                 //e a segunda o número de iterações realizadas
-                long[] answer = SearchHandler(keyword);
+                long[] answer = Iterator.Search(keyword);
                 long index = answer[0];
                 long iterations = answer[1];
 
@@ -120,6 +133,7 @@ namespace Way2Software1.Interface {
 
         }
 
+        #endregion
 
     }
 

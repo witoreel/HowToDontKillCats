@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Way2Software1.Program</StartupObject>
+    <StartupObject>Way2Software1.ProgramStart</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,17 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\LocalDictionaryFile.cs" />
-    <Compile Include="Engine\DictionarySearch.cs" />
+    <Compile Include="Engine\EmptyLocalDictionary.cs" />
+    <Compile Include="Interfaces\DictionaryIterator.cs" />
+    <Compile Include="Interfaces\WebDictionary.cs" />
+    <Compile Include="Interfaces\LocalDictionary.cs" />
+    <Compile Include="Engine\XMLLocalDictionary.cs" />
+    <Compile Include="Engine\Way2Dictionary.cs" />
     <Compile Include="Engine\BissectionIterator.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ProgramStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interface\ConsoleInterface.cs" />
+    <Compile Include="Graphics\ConsoleInterface.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tools\StringTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

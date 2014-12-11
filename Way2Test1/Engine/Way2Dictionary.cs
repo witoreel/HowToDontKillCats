@@ -6,21 +6,24 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Way2Software1.Interfaces;
 using Way2Software1.Properties;
 
 namespace Way2Software1.Engine {
 
     /// <summary>
-    /// Classe responsável por armazenar os métodos de pesquisas em dicionários, seja ele no WebService, seja em um dicionário criado localmente para testes.
+    /// Classe responsável por armazenar o método de pesquisa no dicionário fornecido por WebService pela Way2.
     /// </summary>
-    public class DictionarySearch {
+    public class Way2Dictionary : WebDictionary {
+
+        #region ====== Métodos Públicos ======
 
         /// <summary>
-        /// Realiza a busca de uma palavra contida no dicionário presente no WebService da Way2, a partir de um índice especificado.
+        /// Realiza a busca de uma palavra contida no dicionário, a partir de um índice especificado.
         /// </summary>
         /// <param name="index">Índice a ser buscado no WebService</param>
         /// <returns>Palavra contida no dicionário</returns>
-        public static string SearchAtWebService(long index) {
+        public string Search(long index) {
 
             string keyword = null;
 
@@ -53,6 +56,6 @@ namespace Way2Software1.Engine {
             return keyword;
         }
 
-
+        #endregion
     }
 }
