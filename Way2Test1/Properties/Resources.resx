@@ -133,6 +133,10 @@
     <value>Palavra não encontrada no dicionário.</value>
     <comment>Mensagem exibida caso não encontre o índice</comment>
   </data>
+  <data name="ConsoleAskExit" xml:space="preserve">
+    <value>O programa será finalizado. Pressione alguma tecla para continuar...</value>
+    <comment>Mensagem exibida ao finalizar o programa, permitindo o usuário ler alguma mensagem de erro</comment>
+  </data>
   <data name="ConsoleAskKeyword" xml:space="preserve">
     <value>Insira a palavra a qual deseja obter o índice:</value>
     <comment>Mensagem que irá pedir ao usuário a palavra a ser pesquisada</comment>
@@ -156,5 +160,9 @@
   <data name="DictionaryURL" xml:space="preserve">
     <value>http://teste.way2.com.br/dic/api/words/{0}</value>
     <comment>URL do WebService utilizada para buscar informações do dicionário</comment>
+  </data>
+  <data name="WebURLError" xml:space="preserve">
+    <value>Erro ao acessar o endereço: {0}</value>
+    <comment>Mensagem de erro exibida ao dar algum erro ao acessar determinada URL</comment>
   </data>
 </root>

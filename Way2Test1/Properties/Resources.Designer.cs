@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Way2Test1.Properties {
+namespace Way2Software1.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Way2Test1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Way2Test1.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Way2Software1.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -97,6 +97,15 @@ namespace Way2Test1.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O programa será finalizado. Pressione alguma tecla para continuar....
+        /// </summary>
+        internal static string ConsoleAskExit {
+            get {
+                return ResourceManager.GetString("ConsoleAskExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insira a palavra a qual deseja obter o índice:.
         /// </summary>
         internal static string ConsoleAskKeyword {
@@ -147,6 +156,15 @@ namespace Way2Test1.Properties {
         internal static string DictionaryURL {
             get {
                 return ResourceManager.GetString("DictionaryURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao acessar o endereço: {0}.
+        /// </summary>
+        internal static string WebURLError {
+            get {
+                return ResourceManager.GetString("WebURLError", resourceCulture);
             }
         }
     }

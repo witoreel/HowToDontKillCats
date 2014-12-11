@@ -4,24 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Way2Test1.Dictionary;
-using Way2Test1.Engine;
-using Way2Test1.Interface;
+using Way2Software1.Engine;
+using Way2Software1.Interface;
 
-namespace Way2Test1 {
+namespace Way2Software1 {
 
     class Program {
 
         static ConsoleInterface Interface;
-        static DictionarySearch Dictionary;
         static BissectionIterator Iterator;
+        static LocalDictionary LocalDictionary;
 
         static void Main(string[] args) {
 
-            Dictionary = new DictionarySearch();
-            Iterator = new BissectionIterator(DicSearch);
+            LocalDictionary = new LocalDictionary();
+            Iterator = new BissectionIterator(DictionarySearch.SearchAtWebService);
+            Iterator.SetLocalDictionaryMethods(LocalDictionary.FindIndexes, LocalDictionary.Clear, LocalDictionary.Add);
             Interface = new ConsoleInterface(Iterator.FindIndexByKeyword);
-            System.Console.WriteLine(Dictionary.WebServiceAccessCount + " gatinhos mortos");
             Interface.Show();
 
 

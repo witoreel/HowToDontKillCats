@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Way2Test1.Properties;
+using Way2Software1.Properties;
 
-namespace Way2Test1.Interface {
+namespace Way2Software1.Interface {
     
     /// <summary>
     /// Classe responsável por realizar a interface entre o programa e a tela de Console.
@@ -45,8 +45,10 @@ namespace Way2Test1.Interface {
         /// </summary>
         public void Show() {
 
+            //Desenha o cabeçalho da aplicação
             System.Console.WriteLine(Resources.ConsoleHeader);
 
+            //Inicia o laço responsável por permitir ao usuário realizar diversas pesquisas sem ter de reiniciar o programa
             bool keepSearching;
             do{
                 keepSearching = false;
@@ -54,29 +56,37 @@ namespace Way2Test1.Interface {
                 System.Console.WriteLine();
                 System.Console.WriteLine(Resources.ConsoleSeparator);                          
 
+                //Inicia o laço responsável por pedir ao usuário a palavra a ser buscada novamente, caso seja inserido inicialmente um valor inválido
                 bool keepAskingWord;
                 string keyword;
                 do{
                     keepAskingWord = false;
                     System.Console.Write(Resources.ConsoleAskKeyword + " ");      
                     keyword = System.Console.ReadLine();
+
+                    //Valida a palavra inserida, verificando se não é vazia
                     if (keyword == null || keyword.Trim().Length == 0) {
                         keepAskingWord = true;
                         System.Console.WriteLine();
                     }
                 }while(keepAskingWord);
                 
+                //Realiza a pesquisa da palavra no dicionário e coleta os resultados
+                //É esperado um vetor de long com duas posições, sendo a primeira o índice da palavra no dicionário
+                //e a segunda o número de iterações realizadas
                 long[] answer = SearchHandler(keyword);
                 long index = answer[0];
                 long iterations = answer[1];
 
+                //Processa as mensagens a serem exibidas e as exibe
                 string indexMsg = index < 0 ? Resources.ConsoleAnswerNotFound : Resources.ConsoleAnswerFound;
                 string iterationsMsg = iterations == 1 ? Resources.ConsoleAnswerIterationSingle : Resources.ConsoleAnswerIterationPlural;
-
                 System.Console.WriteLine("\t"+String.Format(indexMsg, index));
                 System.Console.WriteLine("\t" + String.Format(iterationsMsg, iterations));
                 System.Console.WriteLine();
 
+                //Laço responsável por perguntar ao usuário se ele deseja pesquisar novamente uma palavra
+                //Caso o usuário insira um caracter diferente de 's', 'S', 'n', 'N', continua perguntando
                 bool keepAskingContinue;
                 do{
                     keepAskingContinue = false;
@@ -104,6 +114,7 @@ namespace Way2Test1.Interface {
  
             } while (keepSearching);
 
+            //Exibe uma mensagem informando que o sistema irá fechar e espera um segundo para isso
             System.Console.Write(Resources.ConsoleExit);
             Thread.Sleep(1000);
 

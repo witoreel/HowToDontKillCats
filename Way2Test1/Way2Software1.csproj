@@ -7,7 +7,7 @@
     <ProjectGuid>{AA152958-850F-492C-9835-5F80D9E12C97}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Way2Test1</RootNamespace>
+    <RootNamespace>Way2Software1</RootNamespace>
     <AssemblyName>Way2Test1</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Way2Test1.Program</StartupObject>
+    <StartupObject>Way2Software1.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,8 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\LocalDictionaryFile.cs" />
-    <Compile Include="Dictionary\WebServiceAccessList.cs" />
-    <Compile Include="Dictionary\DictionarySearch.cs" />
+    <Compile Include="Engine\DictionarySearch.cs" />
     <Compile Include="Engine\BissectionIterator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
