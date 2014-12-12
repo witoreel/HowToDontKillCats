@@ -34,6 +34,9 @@ namespace Way2Software1 {
             Interface.Show();
 
 
+
+
+
         }
 
     }
